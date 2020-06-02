@@ -1,5 +1,12 @@
 import React from "react";
 
-const Greet = () => <h1> Hello Nikhil </h1>;
+const Greet = ({ name, children }) => {
+  return (
+    <div>
+      <h1> Hello {name} </h1>
+      {children}
+    </div>
+  );
+};
 
 export default Greet;
