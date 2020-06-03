@@ -7,12 +7,14 @@ import ParentComponent from "./components/ParentComponent";
 import Form from "./components/Form";
 import LifeCycleA from "./components/LifeCycleA";
 import PortalDemo from "./components/PortalDemo";
+import Count from "./components/Count";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <PortalDemo />
+      <Count />
+      {/* <PortalDemo />
       <Greet name="React">
         <p> I'm the best js framework </p>
       </Greet>
@@ -23,7 +25,7 @@ function App() {
       <ParentComponent />
       <p> Form Examples </p>
       <Form />
-      <LifeCycleA />
+      <LifeCycleA /> */}
     </div>
   );
 }
