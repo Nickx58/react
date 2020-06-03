@@ -5,6 +5,7 @@ import Message from "./components/Message";
 import Counter from "./components/Counter";
 import ParentComponent from "./components/ParentComponent";
 import Form from "./components/Form";
+import LifeCycleA from "./components/LifeCycleA";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <ParentComponent />
       <p> Form Examples </p>
       <Form />
+      <LifeCycleA />
     </div>
   );
 }
