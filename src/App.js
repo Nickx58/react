@@ -3,6 +3,7 @@ import Greet from "./components/Greet";
 import Welcome from "./components/Welcome";
 import Message from "./components/Message";
 import Counter from "./components/Counter";
+import ParentComponent from "./components/ParentComponent";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
       <Welcome name="Vue" />
       <Message />
       <Counter />
+      <p>Child Parent Event Handler example</p>
+      <ParentComponent />
     </div>
   );
 }
