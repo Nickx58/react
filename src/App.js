@@ -4,6 +4,7 @@ import Welcome from "./components/Welcome";
 import Message from "./components/Message";
 import Counter from "./components/Counter";
 import ParentComponent from "./components/ParentComponent";
+import Form from "./components/Form";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
       <Counter />
       <p>Child Parent Event Handler example</p>
       <ParentComponent />
+      <p> Form Examples </p>
+      <Form />
     </div>
   );
 }
