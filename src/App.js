@@ -6,11 +6,13 @@ import Counter from "./components/Counter";
 import ParentComponent from "./components/ParentComponent";
 import Form from "./components/Form";
 import LifeCycleA from "./components/LifeCycleA";
+import PortalDemo from "./components/PortalDemo";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
+      <PortalDemo />
       <Greet name="React">
         <p> I'm the best js framework </p>
       </Greet>
