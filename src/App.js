@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Count />
-      {/* <PortalDemo />
+      <PortalDemo />
       <Greet name="React">
         <p> I'm the best js framework </p>
       </Greet>
@@ -25,7 +25,7 @@ function App() {
       <ParentComponent />
       <p> Form Examples </p>
       <Form />
-      <LifeCycleA /> */}
+      <LifeCycleA />
     </div>
   );
 }
