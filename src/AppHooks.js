@@ -1,11 +1,11 @@
 import React from "react";
-import HooksObject from "./hooksComponents/HooksObject";
+import HooksArray from "./hooksComponents/HooksArray";
 import "./AppHooks.css";
 
 function AppHooks() {
   return (
     <div className="AppHooks">
-      <HooksObject />
+      <HooksArray />
     </div>
   );
 }
