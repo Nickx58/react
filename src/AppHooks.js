@@ -1,11 +1,11 @@
 import React from "react";
-import Counter from "./hooksComponents/Counter";
+import HooksObject from "./hooksComponents/HooksObject";
 import "./AppHooks.css";
 
 function AppHooks() {
   return (
     <div className="AppHooks">
-      <Counter />
+      <HooksObject />
     </div>
   );
 }
