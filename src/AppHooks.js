@@ -1,10 +1,11 @@
 import React from "react";
+import Counter from "./hooksComponents/Counter";
 import "./AppHooks.css";
 
 function AppHooks() {
   return (
     <div className="AppHooks">
-      <h1> Hooks Testing </h1>
+      <Counter />
     </div>
   );
 }
