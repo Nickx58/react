@@ -1,11 +1,13 @@
-import React from "react";
-import HooksEffect from "./hooksComponents/HooksEffect";
+import React, { useState } from "react";
+import HooksMouse from "./hooksComponents/HooksMouse";
 import "./AppHooks.css";
 
 function AppHooks() {
+  const [toggle, setToggle] = useState(true);
   return (
     <div className="AppHooks">
-      <HooksEffect />
+      <button onClick={() => setToggle(!toggle)}>Toggle Mouse</button>
+      {toggle && <HooksMouse />}
     </div>
   );
 }
