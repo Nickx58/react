@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import App from "./App";
 // import Todo from "./components/Todo";
-import AppHooks from "./AppHooks";
+// import AppHooks from "./AppHooks";
+import App from "./reduxComponents/app";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppHooks />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
