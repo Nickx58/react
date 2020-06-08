@@ -8,7 +8,7 @@ import "./index.css";
 // import reducers from "./reducers";
 import reducers from "./reduxBlog/reducers";
 // import App from "./App";
-// import Todo from "./components/Todo";
+import Todo from "./components/Todo";
 // import AppHooks from "./AppHooks";
 // import App from "./reduxComponents/app";
 import App from "./reduxBlog/App";
@@ -20,7 +20,7 @@ const store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Todo />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

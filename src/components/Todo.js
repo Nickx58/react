@@ -5,7 +5,18 @@ class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: ["Buy Coffee", "Study"],
+      todos: [
+        {
+          id: 1,
+          task: "Coffe",
+          status: "Pending",
+        },
+        {
+          id: 2,
+          task: "Study",
+          status: "Pending",
+        },
+      ],
     };
     this.inputRef = React.createRef();
   }
@@ -13,7 +24,10 @@ class Todo extends Component {
   addTodo = (e) => {
     const { todos } = this.state;
     if (e.key === "Enter") {
-      let newList = [...todos, e.target.value];
+      let newList = [
+        ...todos,
+        { task: e.target.value, status: "Pending", id: todos.length + 1 },
+      ];
       this.setState({ todos: newList });
       this.inputRef.current.value = "";
     }
@@ -21,16 +35,26 @@ class Todo extends Component {
 
   removeTodo = (e) => {
     const { todos } = this.state;
-    let newList = todos.filter((todo, index) => {
-      return index !== e;
+    let newList = todos.filter((todo) => {
+      return todo.id !== e;
     });
     this.setState({ todos: newList });
+  };
+
+  changeStatus = (id) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      todos: prevState.todos.map((todo) => ({
+        ...todo,
+        status: todo.id === id ? (todo.status = "Completed") : todo.status,
+      })),
+    }));
   };
 
   render() {
     const { todos } = this.state;
     return (
-      <div className="App">
+      <div>
         <h1>to-do({todos.length})</h1>
         <input
           type="text"
@@ -39,11 +63,15 @@ class Todo extends Component {
           placeholder="Enter todo"
         />
         <ol>
-          {todos.map((todo, index) => {
+          {todos.map((todo) => {
             return (
-              <li onClick={() => this.removeTodo(index)} key={index}>
-                {todo}
-              </li>
+              <React.Fragment key={todo.id}>
+                <li onClick={() => this.changeStatus(todo.id)}>
+                  {todo.task}
+                  <p>Status: {todo.status}</p>
+                </li>
+                <button onClick={() => this.removeTodo(todo.id)}>Delete</button>
+              </React.Fragment>
             );
           })}
         </ol>
