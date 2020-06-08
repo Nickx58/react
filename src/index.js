@@ -5,7 +5,8 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import "./index.css";
-import reducers from "./reducers";
+// import reducers from "./reducers";
+import reducers from "./reduxBlog/reducers";
 // import App from "./App";
 // import Todo from "./components/Todo";
 // import AppHooks from "./AppHooks";
