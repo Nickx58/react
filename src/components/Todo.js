@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../App.css";
 
 class Todo extends Component {
   constructor(props) {
@@ -17,8 +16,13 @@ class Todo extends Component {
           status: "Pending",
         },
       ],
+      allTodos: [],
     };
     this.inputRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({ allTodos: this.state.todos });
   }
 
   addTodo = (e) => {
@@ -28,7 +32,7 @@ class Todo extends Component {
         ...todos,
         { task: e.target.value, status: "Pending", id: todos.length + 1 },
       ];
-      this.setState({ todos: newList });
+      this.setState({ todos: newList, allTodos: newList });
       this.inputRef.current.value = "";
     }
   };
@@ -51,11 +55,26 @@ class Todo extends Component {
     }));
   };
 
+  filterTodo = (key) => {
+    if (key === "all") {
+      this.setState({ todos: this.state.allTodos });
+      return;
+    }
+    let newList = this.state.allTodos.filter((todo) => {
+      return todo.status === key;
+    });
+    this.setState({ todos: newList });
+  };
+
   render() {
     const { todos } = this.state;
     return (
       <div>
         <h1>to-do({todos.length})</h1>
+        <button onClick={() => this.filterTodo("all")}>All</button>
+        <button onClick={() => this.filterTodo("Completed")}>Completed</button>
+        <button onClick={() => this.filterTodo("Pending")}>Pending</button>
+        <br />
         <input
           type="text"
           ref={this.inputRef}
