@@ -7,11 +7,8 @@ import thunk from "redux-thunk";
 import "./index.css";
 // import reducers from "./reducers";
 import reducers from "./reduxBlog/reducers";
-// import App from "./App";
-import Todo from "./components/Todo";
-// import AppHooks from "./AppHooks";
 // import App from "./reduxComponents/app";
-import App from "./reduxBlog/App";
+import RouteHome from "./RouteHome";
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -20,7 +17,7 @@ const store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Todo />
+      <RouteHome />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
