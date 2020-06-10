@@ -34,7 +34,7 @@ class Todo extends Component {
         ...todos,
         { task: e.target.value, status: "Pending", id: Math.random() },
       ];
-      this.setState({ todos: newList, allTodos: newList });
+      this.setState({ todos: newList });
       this.inputRef.current.value = "";
     }
   };
