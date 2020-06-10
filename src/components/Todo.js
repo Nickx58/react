@@ -6,31 +6,33 @@ class Todo extends Component {
     this.state = {
       todos: [
         {
-          id: 1,
+          id: Math.random(),
           task: "Coffe",
           status: "Pending",
         },
         {
-          id: 2,
+          id: Math.random(),
           task: "Study",
           status: "Pending",
         },
       ],
-      allTodos: [],
+      currentFilter: "All",
     };
     this.inputRef = React.createRef();
   }
 
-  componentDidMount() {
-    this.setState({ allTodos: this.state.todos });
-  }
+  selectFilter = (filter) => {
+    this.setState({
+      currentFilter: filter,
+    });
+  };
 
   addTodo = (e) => {
     const { todos } = this.state;
     if (e.key === "Enter") {
       let newList = [
         ...todos,
-        { task: e.target.value, status: "Pending", id: todos.length + 1 },
+        { task: e.target.value, status: "Pending", id: Math.random() },
       ];
       this.setState({ todos: newList, allTodos: newList });
       this.inputRef.current.value = "";
@@ -55,25 +57,40 @@ class Todo extends Component {
     }));
   };
 
-  filterTodo = (key) => {
-    if (key === "all") {
-      this.setState({ todos: this.state.allTodos });
-      return;
+  getTodos = (todoLists) => {
+    let filterdata = [];
+    const { currentFilter } = this.state;
+    if (currentFilter === "All") {
+      filterdata = [...todoLists];
+    } else if (currentFilter === "Completed") {
+      filterdata = todoLists.filter((el) => el.status === "Completed");
+    } else {
+      filterdata = todoLists.filter((el) => el.status === "Pending");
     }
-    let newList = this.state.allTodos.filter((todo) => {
-      return todo.status === key;
+    if (!filterdata.length) return null;
+    let element = filterdata.map((todo) => {
+      return (
+        <React.Fragment key={todo.id}>
+          <li onClick={() => this.changeStatus(todo.id)}>
+            {todo.task}
+            <p>Status: {todo.status}</p>
+          </li>
+          <button onClick={() => this.removeTodo(todo.id)}>Delete</button>
+        </React.Fragment>
+      );
     });
-    this.setState({ todos: newList });
+    return <ul>{element}</ul>;
   };
 
   render() {
     const { todos } = this.state;
     return (
       <div>
-        <h1>to-do({todos.length})</h1>
-        <button onClick={() => this.filterTodo("all")}>All</button>
-        <button onClick={() => this.filterTodo("Completed")}>Completed</button>
-        <button onClick={() => this.filterTodo("Pending")}>Pending</button>
+        <button onClick={() => this.selectFilter("All")}>All</button>
+        <button onClick={() => this.selectFilter("Completed")}>
+          Completed
+        </button>
+        <button onClick={() => this.selectFilter("Pending")}>Pending</button>
         <br />
         <input
           type="text"
@@ -81,19 +98,7 @@ class Todo extends Component {
           onKeyPress={this.addTodo}
           placeholder="Enter todo"
         />
-        <ol>
-          {todos.map((todo) => {
-            return (
-              <React.Fragment key={todo.id}>
-                <li onClick={() => this.changeStatus(todo.id)}>
-                  {todo.task}
-                  <p>Status: {todo.status}</p>
-                </li>
-                <button onClick={() => this.removeTodo(todo.id)}>Delete</button>
-              </React.Fragment>
-            );
-          })}
-        </ol>
+        <div>{this.getTodos(todos)}</div>
       </div>
     );
   }
